@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <fcntl.h>// for reading "RDONLY WRONLY..."
-#include <unistd.h>
-#include <string.h>
+#include <unistd.h>// open()
+#include <string.h>// stringcat string cpy
 #include <stdlib.h>
 
 int main(){
@@ -18,6 +18,7 @@ int main(){
     for (int  i = 0; i < r; i+=8){
         char checkSYN[9]= {arr[i],arr[i+1],arr[i+2],arr[i+3],arr[i+4],arr[i+5],arr[i+6],arr[i+7]};
         // printf("Checking my %s\n",checkSYN);
+        //let check the frist and sencond is 22
         if(check2==0){
             if(check==0){
             for (int k=0;k<8;k++){
@@ -36,6 +37,7 @@ int main(){
             }
             }
         }else{
+            // let turn binary to int
             char*temStrInt = checkSYN;
             int byNum = atoi(temStrInt), decimal_num=0,base=1,rem;
             // printf(" num = %d\n",byNum);

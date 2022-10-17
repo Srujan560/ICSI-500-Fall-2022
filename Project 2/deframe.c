@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
-
+// let remove our frames 
 int main(){
     printf("running Deframe\n");
      char arr[10000];
@@ -36,6 +36,7 @@ int main(){
             }
             }
         }else{
+            // in here we will trun binary into int
             char*temStrInt = checkSYN;
             int byNum = atoi(temStrInt), decimal_num=0,base=1,rem;
             // printf(" num = %d\n",byNum);
@@ -47,6 +48,7 @@ int main(){
             }
             // if(decimal_num!=32)  
             // printf(" INT = %d and check2=%d\n",decimal_num,check2);
+            // onece we got our int let read form our next c where our ch values bienigs 
             i=i+8;
             // printf("i= %d before\n",i);
             int tempIndex=i+(8*decimal_num),strIndex=0;
@@ -61,7 +63,7 @@ int main(){
             // printf("strArrAy = %s\n",tempStrArray);
             fprintf(fd2,"%s",tempStrWrite);
             // printf("str = %s\n",tempStrWrite);
-            i=tempIndex-8;
+            i=tempIndex-8;//to remove b/c our will add an extra 8 by the end of the loop
             // printf("i= %d strIndex= %d and 8*dec =%d and tempInd= %d\n",i,strIndex,8*decimal_num,tempIndex);
             // if(checkSYN[4]=='1'){
             //     i=i+8;
@@ -91,12 +93,13 @@ int main(){
             //     fprintf(fd2,"%s",tempStrWrite);
             //     i=tempIndex;
             // }
-            check2=0;
+            check2=0;// reset our check 
             
         }
         // exit(0);
 
     }
+    // once done let remove everything 
     fclose(fd2);
 
     // int fd3  open("pread.tmp",O_RDONLY,0);

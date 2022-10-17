@@ -18,7 +18,7 @@ int main(){
         // char temp[8]={arr[x],arr[x+1],arr[x+2],arr[x+3],arr[x+4],arr[x+5],arr[x+6],arr[x+7]};
         // char *some =temp;
         // some[8]='\0';
-        count++;
+        count++;// let count each ch values 
         // char *tempStr = (char *)malloc(1+strlen(dd)+strlen(some));
         // strcpy(tempStr,dd);
         // strcpy(tempStr,some);
@@ -28,7 +28,7 @@ int main(){
         // // free(tempStr);
         // printf("my dd is %s\n",dd);
 
-      
+        //one we have 32 or end of the loop we add them make array than write to file
         if (count==32||(x+7)==r-1){
             int tempInt =x- (count -1)*8;
             // printf("Is not 32 from framing.c %d\n",count);
@@ -50,7 +50,7 @@ int main(){
                 // printf("z=%d ch=%c\n",z,binaryNum[z]);
                 // printf("%s\n",binaryNum);
             }
-            binaryNum[8]='\0';
+            binaryNum[8]='\0';// let filled with zeros and we can just put towards end ...so str happen 
 
             // printf("str a a a %s\n",binaryNum);
             // exit(0);
@@ -72,7 +72,7 @@ int main(){
             
 
             // printf("str %s\n",binaryNum);
-            char *SYN2= "0001011000010110";
+            char *SYN2= "0001011000010110";//no need of parity bit b/c they are all odd
             char *binChar = binaryNum;
             char *newFrame = (char *)malloc(1+strlen(SYN2)+strlen(binChar));
             strcpy(newFrame,SYN2);

@@ -3,7 +3,7 @@
 #include <fcntl.h>// for reading "RDONLY WRONLY..."
 #include <stdlib.h>
 
-
+// in here check add our odd parity bit 
 void parity(){
     int fd=open("binary.binf",O_RDONLY,0);
     char bin[10000];
@@ -24,7 +24,7 @@ void parity(){
             }
             
         }
-        if (count%2==0){
+        if (count%2==0){// if even let just add but 
             some[0]='1';
         }
         fprintf(nbin,"%s",some);
@@ -72,6 +72,7 @@ int main(){
             
             
         }
+        // close everything once done 
         close(fd);
         fclose(bin);
         parity();

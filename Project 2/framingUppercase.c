@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <fcntl.h>// for reading "RDONLY WRONLY..."
 #include <unistd.h>
-#include <string.h>
-#include <stdlib.h>
+#include <string.h> // strcpy and strcat
+#include <stdlib.h>//opne()
 
 
 int main(){
@@ -28,7 +28,7 @@ int main(){
         // // free(tempStr);
         // printf("my dd is %s\n",dd);
 
-      
+        //let make sure that if have count of 32 or we end of our binary 
         if (count==32||(x+7)==r-1){
             int tempInt =x- (count -1)*8;
             // printf("Is not 32 from framing.c %d\n",count);
@@ -39,6 +39,7 @@ int main(){
             // if(x+7==r-1){
             //     printf("r = %d x+7 = %d and val= %c\n",r-1,,arr[x+7]);
             // }
+            // base on the array make sises 
             char tempCharArr[(count)*8 ];
             for (int y=0; y<sizeof(tempCharArr);y++){
                 tempCharArr[y]=arr[tempInt+y];
@@ -72,20 +73,22 @@ int main(){
             
 
             // printf("str %s\n",binaryNum);
+            // now let write everything on the string to our file
             char *SYN2= "0001011000010110";
             char *binChar = binaryNum;
-            char *newFrame = (char *)malloc(1+strlen(SYN2)+strlen(binChar));
-            strcpy(newFrame,SYN2);
-            strcat(newFrame,binChar);
-            char *tempPase=tempCharArr;
+            char *newFrame = (char *)malloc(1+strlen(SYN2)+strlen(binChar));//so exact bits to write
+            strcpy(newFrame,SYN2);// frist add SYN22
+            strcat(newFrame,binChar);// how bits we read
+            char *tempPase=tempCharArr;// than our ch in binary
             fprintf(fd2,"%s%s",newFrame,tempPase);
             // exit(0);
             
-            
+            // let rest counter
             count=0;
         }
         
     }
+    // once done let close
     fclose(fd2);
     // char *some = "Hello";
     // char *another = "2020202020 ";

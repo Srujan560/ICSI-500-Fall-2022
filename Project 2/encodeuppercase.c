@@ -52,7 +52,7 @@ int main(){
                 unsigned char c = editText[x];
                 for (int i=7;i>=0;i--){
                     
-                    fprintf(bin,"%c",( c >> i ) & 1 ? '1' : '0');
+                    fprintf(bin,"%c",( c >> i ) & 1 ? '1' : '0');// here we turn char into bits of 8
 
                 }
             } 

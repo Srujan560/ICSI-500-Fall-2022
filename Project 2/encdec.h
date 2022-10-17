@@ -1,11 +1,16 @@
 // #include <stdio.h>
 // #include <unistd.h>
+//ilbat that will used by main method 
 void runEncode(){
     printf("I am here in runEcode in my libary\n");
     char* arr[]={"c",NULL};
     execv("c",arr);
     fprintf(stderr,"Fail to runEncode method From LIBAay\n");
 }
+/* 
+In here we will take in put and out put file
+we will read bits than we check 0th index and either we rm it or do nothing 
+*/
 void decode(char* binaryFile,char* towrite){
     int fd=open(binaryFile,O_RDONLY,0);
     char bin[10000];
@@ -34,6 +39,9 @@ void decode(char* binaryFile,char* towrite){
         // printf("sise %d\n",r);
 
 }
+/*
+In this method we will take input and output file... we will check the (0 index)8th bit and remove than we know it even
+*/
 
 void parityremove(char *fname,char *output){
     int fd=open(fname,O_RDONLY,0);
@@ -66,7 +74,9 @@ void parityremove(char *fname,char *output){
     fclose(nbin);
     // printf("All Done\n");
 }
-
+/**
+ * In here we will take the input file and outfile that we need to write 
+*/
 void decodeAndUpperCase(char* binaryFile,char* towrite){
     int fd=open(binaryFile,O_RDONLY,0);
     char bin[10000];
@@ -86,17 +96,17 @@ void decodeAndUpperCase(char* binaryFile,char* towrite){
         char c = strtol(data, 0, 2);
        
         if(c>='a'&&c<='z'){
-            c=c-32;
+            c=c-32;// here we trun char to upeercase 
             
         }
         // printf("%c",c);
-        fprintf(f,"%c",c);
+        fprintf(f,"%c",c);// than write 
         //  if (c=='\''){printf("OOF %c\n",c);exit(0);} if (c=='\''){printf("OOF\n");exit(0);}//error b/c fancy curve ' is not able to be read
         // exit(0);
         // printf("x=%d %s\n\n\n",x,data);
 
     }
-    fclose(f);
+    fclose(f);// once done close 
     close(fd);
         // printf("sise %d\n",r);
 
