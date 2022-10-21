@@ -66,9 +66,17 @@ int main(){
         }
         wait(&st);
        // let remove the parity bit 
+       int fkprm=fork(), statprm=2;
+       if(fkprm==0){
         parityremove("deframedUppercase.tmp","p_removed.outf");
+       }
+       wait(&statprm);
         // than give the user .doen file
+        int fkdec =fork(), statdec=0;
+        if(fkdec==0){
         decode("p_removed.outf","user.done");
+        }
+        wait(&statdec);
 
     }else{
         close(p[1]);
@@ -99,10 +107,17 @@ int main(){
        // remove our frmaes 
        
         // remobe our pritory bit 
-        parityremove("deframed.tmp","bremoved.binf");
+        int fkprm=fork(), statprm=2;
+        if(fkprm==0){
+            parityremove("deframed.tmp","bremoved.binf");
+        }
+        wait(&statprm);
         // decode("bremoved.binf","out.test");
-        decodeAndUpperCase("bremoved.binf", "uppercase.outf");//once decode we can now trun into char
-
+        int fkdecodeu= fork(), statdecu=0;
+        if(fkdecodeu==0){
+            decodeAndUpperCase("bremoved.binf", "uppercase.outf");//once decode we can now trun into char
+        }
+        wait(&statdecu);
         int fk2=fork(),sta2=0;
         
         // now let encode our all upercase letters 
