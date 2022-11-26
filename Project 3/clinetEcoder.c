@@ -45,7 +45,7 @@ int main(){
         printf("Just Add hamming code \n");
 
     }else{
-        printf("running parent\n");
+        printf("running client Encoder\n");
 
     }
 

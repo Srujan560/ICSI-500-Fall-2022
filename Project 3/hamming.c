@@ -64,7 +64,7 @@ int main(int arg, char *argc[]){
             }
             
         }
-        printf("p1 = %d p2 =%d p4= %d p8=%d\n",countp1,countp2,countp4,countp8);
+        // printf("p1 = %d p2 =%d p4= %d p8=%d\n",countp1,countp2,countp4,countp8);
         if(countp1%2!=0)
             temp2[0]='1';
         if(countp2%2!=0)

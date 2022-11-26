@@ -49,8 +49,8 @@ int main(int arg, char *argc[]){
         if(countp8%2==1&&some[7]!='1' ||  countp8%2==0 && some[7]!='0')
             errorIndex+=8;
         
-        printf("p1 = %d p2 =%d p4= %d p8=%d\n",countp1,countp2,countp4,countp8);
-        printf("Error index[%d] some = %c  and char value: %s\n",errorIndex,some[0],some);
+        // printf("p1 = %d p2 =%d p4= %d p8=%d\n",countp1,countp2,countp4,countp8);
+        // printf("Error index[%d] some = %c  and char value: %s\n",errorIndex,some[0],some);
         if(errorIndex!=0){
             errorIndex=errorIndex-1;
             printf("error Handling.c: ERROR ERROR  error detection found at index %d \n",errorIndex);

@@ -7,6 +7,8 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 
+#include <sys/wait.h>//We this so our parent can wait
+#include <fcntl.h>// for reading "RDONLY WRONLY..."
 int main(){
     char *ip = "127.0.0.1";
     int port =3001;
@@ -16,7 +18,7 @@ int main(){
     struct sockaddr_in server_addr, client_addr;
     socklen_t addr_size;
 
-    char buffer[1025];
+    char buffer[10025];
     int n;
 
     server_sock = socket(AF_INET, SOCK_STREAM,0);
@@ -49,12 +51,25 @@ int main(){
         printf("[+]Nice Client has been successfully connected \n");
 
         // listing
-         bzero(buffer, 1025);
+         bzero(buffer, 10025);
          recv(client_sock,buffer,sizeof(buffer),0);
-         printf("Client:%s\n",buffer);
+        //  printf("Client:%s\n",buffer);
+        FILE *nbin = fopen("server.tmp","w");
+        char *tempStr =buffer;
+        fprintf(nbin,"%s",tempStr);
+        fclose(nbin);
+
+        int wait1=0;
+        if(!fork()){
+            char* arr[]={"sd",NULL};
+            execv("sd",arr);
+            fprintf(stderr,"Fail to to run ServerDecoder from Server.c\n");
+        }
+        wait(&wait1);
+        printf("Server decoder is done about send run pthreads to service\n");
 
         // sending a message
-         bzero(buffer, 1025);
+         bzero(buffer, 10025);
          strcpy(buffer, "Hi this SERVER :P \n");
          printf("Server: %s\n",buffer);
          send(client_sock,buffer,strlen(buffer),0);

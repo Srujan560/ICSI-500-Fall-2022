@@ -11,6 +11,8 @@ final:
 	gcc hamming.c -o h;
 	gcc errorHandling.c -o eh;
 	gcc clinetDecoder.c -o cd;
+	gcc serverDecoder.c -o sd;
+	gcc -pthread serverPthread.c -o sp;
 runServer:
 	./s
 runClient:
@@ -18,4 +20,7 @@ runClient:
 clean:
 	rm *.o
 removeOutputfiles:
-	rm s c e p d pr
+	rm s c e p d pr ce h eh cd sd sp
+current:
+	gcc -pthread serverPthread.c -o sp;
+	./sp;
