@@ -15,7 +15,7 @@ int main(){
         // if(fk2<0){fprintf(stderr,"not able to create fork2\n");}// if problem 
         int wait2=0;
         if(!fork()){
-            char* arr[]={"e","aaa.txt","output.binary",NULL};
+            char* arr[]={"e","intext.txt","output.binary",NULL};
             execv("e",arr);
             fprintf(stderr,"Fail to Encode method From ClientEcode\n");
         }
@@ -36,13 +36,13 @@ int main(){
             fprintf(stderr,"Fail to to run parity method From ClientEcode\n");
         }
         wait(&wait4);  
-        int wait5=0;
-        if(!fork()){
-            printf("my soncodne\n");
-        }
-        wait(&wait5);
+        // int wait5=0;
+        // if(!fork()){
+        //     printf("my soncodne\n");
+        // }
+        // wait(&wait5);
         
-        printf("Im here\n");
+        printf("Just Add hamming code \n");
 
     }else{
         printf("running parent\n");

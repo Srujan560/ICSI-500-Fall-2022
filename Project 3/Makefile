@@ -10,6 +10,7 @@ final:
 	gcc clinetEcoder.c -o ce;
 	gcc hamming.c -o h;
 	gcc errorHandling.c -o eh;
+	gcc clinetDecoder.c -o cd;
 runServer:
 	./s
 runClient:
