@@ -73,8 +73,18 @@ int main(){
     fprintf(nbin,"%s",tempStr);
     fclose(nbin);
 
+    int wait2=0;
+    if(!fork()){
+        char* arr[]={"cd",NULL};
+        execv("cd",arr);
+        fprintf(stderr,"Fail to to run ClientEcode from Client.c\n");
+    }
+    wait(&wait2);
+
     close(sock);
     printf("Disconnected from the server\n\n\n");
+
+    printf("Nice! Got everything Please take look at  result.txt\n");
 
 
 

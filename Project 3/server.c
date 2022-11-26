@@ -67,12 +67,35 @@ int main(){
         }
         wait(&wait1);
         printf("Server decoder is done about send run pthreads to service\n");
+        int wait2=0;
+        if(!fork()){
+            char* arr[]={"sp",NULL};
+            execv("sp",arr);
+            fprintf(stderr,"Fail to to run ServerPthreads from Server.c\n");
+        }
+        wait(&wait2);
+        printf("Server pthread are done running decode from server.c \n");
+        int wait3=0;
+        if(!fork()){
+            char* arr[]={"se",NULL};
+            execv("se",arr);
+            fprintf(stderr,"Fail to to run ServerEncoder from Server.c\n");
+        }
+        wait(&wait3);
+        printf("Just finished encoder ready to send back to client\n");
+
+        int fd = open("ServerHammingOutput.binary",O_RDONLY,0);
+        int r = read(fd,buffer,10025);
+        close(fd);
+        if(r==-1){fprintf(stderr,"Was not able to read ServerHammingOutput.binary in server.c\n");}
+        send(client_sock,buffer,r,0);
+        printf("Just Send bits to Client\n");
 
         // sending a message
-         bzero(buffer, 10025);
-         strcpy(buffer, "Hi this SERVER :P \n");
-         printf("Server: %s\n",buffer);
-         send(client_sock,buffer,strlen(buffer),0);
+        //  bzero(buffer, 10025);
+        //  strcpy(buffer, "Hi this SERVER :P \n");
+        //  printf("Server: %s\n",buffer);
+        //  send(client_sock,buffer,strlen(buffer),0);
         
         // closing client socket 
          close(client_sock);

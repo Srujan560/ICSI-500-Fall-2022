@@ -13,6 +13,7 @@ final:
 	gcc clinetDecoder.c -o cd;
 	gcc serverDecoder.c -o sd;
 	gcc -pthread serverPthread.c -o sp;
+	gcc serverEncode.c -o se;
 runServer:
 	./s
 runClient:
@@ -20,7 +21,8 @@ runClient:
 clean:
 	rm *.o
 removeOutputfiles:
-	rm s c e p d pr ce h eh cd sd sp
-current:
-	gcc -pthread serverPthread.c -o sp;
-	./sp;
+	rm s c e p d pr ce h eh cd sd sp se
+# current:
+# 	gcc -pthread serverPthread.c -o sp;
+# 	./sp;
+

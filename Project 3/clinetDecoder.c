@@ -11,7 +11,7 @@ int main(){
     if(fk<0){fprintf(stderr,"not able to create fork1\n");}// if problem 
     if(fk==0){
         if(!fork()){
-            char* arr[]={"eh","hammingOutput.binary","removeHamming.binary",NULL};
+            char* arr[]={"eh","client.tmp","removeHamming.binary",NULL};
             execv("eh",arr);
             fprintf(stderr,"Fail to to run errorHandling.c method From ClientDecoder\n");
         }

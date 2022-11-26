@@ -48,7 +48,7 @@ void *charA(void* arg){
 char arr2[8];
 void *charE(void* arg){
     int run=0;
-    while(run<=numberChars){
+    while(run<numberChars){
         //wait for CharA to put in arr1
         sem_wait(&mutex2);
         // printf("I am here In Char E while loop\n");
@@ -75,7 +75,7 @@ char arr3[8];
 void *charI(void* arg){
     int run=0;
     
-    while(run<=numberChars){
+    while(run<numberChars){
         // wait for CharE to put in array
         sem_wait(&mutex3);
         // printf("I am here In Char I\n");
@@ -96,7 +96,7 @@ char arr4[8];
 void *charO(void* arg){
     int run=0;
     
-    while(run<=numberChars){
+    while(run<numberChars){
         sem_wait(&mutex4);
         //  printf("I am here In Char O\n");
         for(int i=0;i<7;i++){
@@ -117,7 +117,7 @@ char arr5[8];
 void *charU(void* arg){
     int run=0;
     
-    while(run<=numberChars){
+    while(run<numberChars){
         sem_wait(&mutex5);
         // printf("I am here In Char U\n");
         for(int i=0;i<7;i++){
@@ -138,7 +138,7 @@ int numberOfDigits=0;
 void *digit(void* arg){
     int run=0;
     
-    while(run<=numberChars){
+    while(run<numberChars){
         sem_wait(&mutex6);
         // printf("I am here in the count\n");
         for(int i=0;i<7;i++){
@@ -157,7 +157,7 @@ void *digit(void* arg){
 void *writer(void *arg){
     int run=0, count=0;
     char finallyArr[totalChar];
-    while(run<=numberChars){
+    while(run<numberChars){
         sem_wait(&mutex7);
         // printf("I am here in Writer\n");
         for(int i=0;i<7;i++){
@@ -211,7 +211,7 @@ int main(){
     printf("Number of bites I just read: %d\n",r);
     // charA(NULL);
 
-
+    close(fd);
     // semaphore
 	sem_init(&mutex, 0, 1);
 	sem_init(&mutex2, 0, 0);
