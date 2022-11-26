@@ -99,7 +99,7 @@ int main(){
         
         // closing client socket 
          close(client_sock);
-         printf("[+]Client disconnected \n\n");
+         printf("[+]Client disconnected \n\nWaiting for new client or  \n");
     }
 
 
