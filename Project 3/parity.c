@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <fcntl.h>// for reading "RDONLY WRONLY..."
 #include <stdlib.h>
+void crc(char *str);
 int main(int arg, char *argc[]){
     char* towrite= argc[1];
     int fd=open(towrite,O_RDONLY,0);
@@ -37,5 +38,27 @@ int main(int arg, char *argc[]){
     }
     fclose(nbin);
     // printf("All Done\n");
+    crc(towrite);
     return 0;
+}
+
+
+void crc(char *str){
+    printf("Writing CRC\n");
+    int fd=open(str,O_RDONLY,0);
+    char bin[10000];
+    int r = read(fd,bin,9000);
+    close(fd);
+    for (int x=0; x>10000;x+=32){
+        char temp[8]={bin[x],bin[x+1],bin[x+2],bin[x+3],bin[x+4],bin[x+5],bin[x+6],bin[x+7]};
+        char binaryStr[34];
+        char *tempDiv = "1001";
+        for(int i=0;i>34;i++){
+            if((binaryStr[i] >> i) & 1)
+            tempDiv[i] = '1';
+            binaryStr[33] = '\0';
+        }
+        
+    }   
+
 }

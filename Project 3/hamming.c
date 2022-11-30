@@ -18,7 +18,7 @@ int main(int arg, char *argc[]){
     //make sure the choose is with the range of user input text
     int repeatedAttack = 3;
 
-    // // here we pick our bits go with our array after adding hamming code 
+    // // here we pick our bits go with our array after adding hamming code it also mess with CRC 
     if(0<=errorChooseIndex && errorChooseIndex<=7){
         if(errorChooseIndex==0)
             errorChooseIndex=2;
