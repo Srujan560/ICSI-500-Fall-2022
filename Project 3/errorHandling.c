@@ -3,6 +3,14 @@
 #include <sys/wait.h>//We this so our parent can wait 
 #include <fcntl.h>// for reading "RDONLY WRONLY..."
 #include <stdlib.h>
+/*
+This code is a simple implementation of a error handling and correction algorithm using the Hamming code. 
+The code takes in two arguments, the input file name and the output file name. 
+It then opens the input file in read-only mode and reads in the contents into a character array. 
+It then iterates over the array in steps of 12, reading 12 characters at a time. 
+For each group of 12 characters, it counts the number of 1's in specific indices according to the Hamming code, and uses this information to detect any errors. 
+If an error is detected, it is corrected by flipping the value of the appropriate bit. The corrected group of 12 characters is then written to the output file.
+*/
 
 int main(int arg, char *argc[]){
 
@@ -27,7 +35,7 @@ int main(int arg, char *argc[]){
         // printf("Before changeing error: %s\n",some);
         for(int i=0;i<12;i++){
             // printf("%c",some[i]);
-            if(some[i]=='1'){
+            if(some[i]=='1'){   // here we count all the 1  index for hamming code p1, p2,p4, and p8 
                 if(i==2||i==4||i==6||i==8||i==10)
                     countp1++;
                 if(i==2||i==5||i==6||i==9||i==10)
@@ -40,6 +48,7 @@ int main(int arg, char *argc[]){
             
         }
         int errorIndex=0;
+        // now let check if any errors we found using hamming error handling 
         if(countp1 %2 ==1 && some[0]!='1' ||countp1 %2 == 0 && some[0]!='0' )
             errorIndex+=1;
         if(countp2%2==1 && some[1]!='1' || countp2%2==0 && some[1]!='0' )

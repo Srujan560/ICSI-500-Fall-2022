@@ -4,6 +4,12 @@
 #include <fcntl.h>// for reading "RDONLY WRONLY..."
 #include <stdlib.h>
 
+/*
+This code is a simple implementation of an error detection and correction algorithm using parity bits.
+The code takes in two arguments, the input file name and the output file name. 
+It then opens the input file in read-only mode and reads in the contents into a character array. 
+*/
+
 int main(int arg, char *argc[]){
 
     // printf("inpu = %s and out put =%s and arg=%d\n",argc[1], argc[2], arg);

@@ -2,6 +2,15 @@
 #include <unistd.h>
 #include <fcntl.h>// for reading "RDONLY WRONLY..."
 #include <stdlib.h>
+/*
+This code is a simple implementation of an error injection algorithm using the Hamming code. 
+The code takes in two arguments, the input file name and the output file name. 
+It then opens the input file in read-only mode and reads in the contents into a character array. 
+It then iterates over the array in steps of 8, reading 8 characters at a time. 
+For each group of 8 characters, it calculates the parity bits for the Hamming code and appends them to the group of 8 characters to form a group of 12 characters. 
+It then flips the value of a specific bit in the group of 12 characters according to a user-specified index, effectively introducing an error into the group. 
+The modified group of 12 characters is then written to the output file.
+*/
 
 int main(int arg, char *argc[]){
     char* inputFile= argc[1];
